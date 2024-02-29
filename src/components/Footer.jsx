@@ -1,4 +1,4 @@
-import React from 'react'
+import Logo from "../assets/logo-breaking-news.png"
 
 const Footer = () => {
   return (
