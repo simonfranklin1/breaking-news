@@ -7,7 +7,7 @@ const Home = () => {
   const [posts, setPosts] = useState(null);
 
   useEffect(() => {
-    getAllPosts().then(response => console.log(response))
+    getAllPosts().then(response => setPosts(response))
   }, [])
 
   return (
@@ -16,7 +16,7 @@ const Home = () => {
       <div className="grid grid-cols-2 gap-4 gap-y-[10px]">
         {
           posts && (
-            posts.map((post) => (
+            posts.results.map((post) => (
               <Card key={post.id} title={post.title} text={post.text} img={post.banner} comments={post.comments} likes={post.likes} />
             ))
           ) || (

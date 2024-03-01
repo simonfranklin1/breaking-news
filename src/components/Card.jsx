@@ -9,9 +9,9 @@ const Card = ({ title, text, img, likes, comments }) => {
 
   return (
     <div className="flex flex-col gap-4 max-w-full shadow-md rounded-md bg-white p-8">
-      <article className="flex items-center gap-4 justify-center">
+      <article className="flex items-center gap-4 justify-between">
         <div>
-          <h2 className='mb-4'>{title}</h2>
+          <h2 className='mb-4 font-bold'>{title}</h2>
           <p>{text}</p>
         </div>
         <img className='w-[30%] object-cover object-center' src={img} alt={img} />
