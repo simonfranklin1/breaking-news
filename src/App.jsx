@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Navbar } from "./components"
+import { Footer, Navbar } from "./components"
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 
@@ -13,6 +13,7 @@ function App() {
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   )
 }
