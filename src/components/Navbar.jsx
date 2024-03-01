@@ -4,7 +4,7 @@ import CustomButton from "./CustomButton"
 const Navbar = () => {
   return (
     <>
-      <nav className="flex w-full justify-between items-center p-4 fixed top-0 z-10 bg-white shadow-sm">
+      <nav className="flex w-full justify-between items-center p-4 fixed top-0 z-10 bg-white shadow-md">
         <div className="relative w-[220px] flex items-center">
           <i className="bi bi-search absolute top-[1] right-1 bg-[#f5f5f5] text-[#757575] rounded-[0.3rem] p-2 z-10"></i>
           <input type="text" placeholder="Pesquise por um título" className="outline-none p-[0.6rem] bg-[#f5f5f5] border-none w-full rounded-[0.3rem] focus:border-[#0bade3] focus:border-[1px] focus:border-solid" />
