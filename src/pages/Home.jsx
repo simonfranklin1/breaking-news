@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Card } from "../components";
 import { getAllPosts, getTopNews } from "../utils/utils";
 import HomeHeader from "../components/HomeHeader";
-import NewsContainer from "../components/NewsContainer";
+import PostsContainer from "../components/NewsContainer";
 
 
 const Home = () => {
@@ -22,7 +22,7 @@ const Home = () => {
         posts && topNews && (
           <>
             <HomeHeader news={topNews} />
-            <NewsContainer posts={posts.results} />
+            <PostsContainer posts={posts.results} />
           </>
         ) || (
           <div className="text-lg w-full">...Loading</div>

@@ -28,3 +28,16 @@ export const limitText = (str, number) => {
   
     return str.substring(0, number) + "...";
 }
+
+export const getPostsBySearch = async (search) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/search?title=" + search, { 
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    const data = await response.json();
+
+    return data
+}
