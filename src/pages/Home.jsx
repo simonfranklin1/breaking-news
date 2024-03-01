@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Card } from "../components";
 import { getAllPosts, getTopNews } from "../utils/utils";
 import HomeHeader from "../components/HomeHeader";
+import NewsContainer from "../components/NewsContainer";
 
 
 const Home = () => {
@@ -21,11 +22,7 @@ const Home = () => {
         posts && topNews && (
           <>
             <HomeHeader news={topNews} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {posts.results.map((post) => (
-                <Card key={post.id} title={post.title} text={post.text} img={post.banner} comments={post.comments} likes={post.likes} />
-              ))}
-            </div>
+            <NewsContainer posts={posts.results} />
           </>
         ) || (
           <div className="text-lg w-full">...Loading</div>

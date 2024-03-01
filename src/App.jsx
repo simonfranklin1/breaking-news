@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
 import { Footer, Navbar } from "./components"
 import { Route, Routes } from "react-router-dom"
-import Home from "./pages/Home"
+import { Home, Search } from "./pages"
 
 function App() {
 
@@ -11,6 +10,7 @@ function App() {
       <div className="py-[130px] w-[80%] mx-auto">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search/:query" element={<Search />} />
         </Routes>
       </div>
       <Footer />
