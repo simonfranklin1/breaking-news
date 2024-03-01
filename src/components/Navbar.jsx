@@ -1,4 +1,5 @@
 import Logo from "../assets/logo-breaking-news.png"
+import CustomButton from "./CustomButton"
 
 const Navbar = () => {
   return (
@@ -11,9 +12,7 @@ const Navbar = () => {
 
         <img src={Logo} alt="Logo" className="w-[8rem] h-[3.5rem] object-cover cursor-pointer self-center" />
 
-        <button className="text-white bg-[#0bade3] border-none outline-none text-[1rem] rounded-md font-medium py-2 px-4 uppercase ease-in-out duration-[0.4s] hover:bg-[#0a86af]">
-          Entrar
-        </button>
+        <CustomButton text={"entrar"} />
       </nav>
     </>
   )
