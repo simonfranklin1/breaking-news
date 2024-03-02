@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getLocalStorage, login } from "../utils/utils";
+import { getLocalStorage, getUser } from "../utils/utils";
 
 
 export const BreakingNewsContext = createContext();
@@ -21,7 +21,7 @@ export const BreakingNewsContextProvider = ({ children }) => {
 
     useEffect(() => {
         if(token) {
-            login(token.id, token.token).then(response => setUser(response));
+            getUser(token.id, token.token).then(response => setUser(response));
         }
         
     }, [])

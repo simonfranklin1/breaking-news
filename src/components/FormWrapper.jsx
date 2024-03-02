@@ -4,10 +4,10 @@ import SigninForm from './SigninForm'
 import SignupForm from './SignupForm'
 
 const FormWrapper = () => {
-  const { background, form, setForm, setBackground } = useBreakingNews()
+  const { form } = useBreakingNews();
 
   return (
-    <div className={`${background ? "block" : "hidden"} fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20`}>
+    <div className={`block fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20`}>
       {
         form === "signin" && (
           <SigninForm />

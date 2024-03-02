@@ -23,6 +23,7 @@ const Navbar = () => {
       setBackground(true);
       setForm("signin")
   }
+
   return (
     <>
       <nav className="flex w-full justify-between items-center p-4 fixed top-0 z-10 bg-white shadow-md">
@@ -39,7 +40,9 @@ const Navbar = () => {
           user && (
             <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full object-contain" />
           ) || (
-            <CustomButton text={"entrar"} handleClick={openForms} />
+            <Link to={"/auth"}>
+              <CustomButton text={"entrar"} />
+            </Link>
           )
         }
       </nav>

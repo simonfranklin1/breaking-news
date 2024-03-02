@@ -1,5 +1,5 @@
 export const getAllPosts = async () => {
-    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news?limit=5&offset=1", { 
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news?limit=5&offset=1", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -10,8 +10,8 @@ export const getAllPosts = async () => {
     return data;
 }
 
-export const getTopNews = async () =>{
-    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/top", { 
+export const getTopNews = async () => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/top", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -24,13 +24,13 @@ export const getTopNews = async () =>{
 }
 
 export const limitText = (str, number) => {
-    if(str.length < number) return str
-  
+    if (str.length < number) return str
+
     return str.substring(0, number) + "...";
 }
 
 export const getPostsBySearch = async (search) => {
-    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/search?title=" + search, { 
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/search?title=" + search, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -42,7 +42,7 @@ export const getPostsBySearch = async (search) => {
     return data
 }
 
-export const login = async (id, token) => {
+export const getUser = async (id, token) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/user/findById/" + id, {
         method: "GET",
         headers: {
@@ -56,6 +56,20 @@ export const login = async (id, token) => {
     console.log(data)
 
     return data;
+}
+
+export const login = async (email, password) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/auth", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email, password
+        })
+    });
+
+    const data = await response.json();
 }
 
 export const getLocalStorage = (key) => {
