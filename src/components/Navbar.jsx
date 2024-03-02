@@ -2,10 +2,12 @@ import { useState } from "react";
 import Logo from "../assets/logo-breaking-news.png"
 import CustomButton from "./CustomButton"
 import { Link, useNavigate } from "react-router-dom"
+import { useBreakingNews } from "../context/breakingNewsContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const { setBackground, setForm } = useBreakingNews();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -17,6 +19,10 @@ const Navbar = () => {
     }
   }
 
+  const openForms = ( ) => {
+      setBackground(true);
+      setForm("signin")
+  }
   return (
     <>
       <nav className="flex w-full justify-between items-center p-4 fixed top-0 z-10 bg-white shadow-md">
@@ -29,7 +35,7 @@ const Navbar = () => {
           <img src={Logo} alt="Logo" className="w-[8rem] h-[3.5rem] object-cover cursor-pointer self-center" />
         </Link>
 
-        <CustomButton text={"entrar"} />
+        <CustomButton text={"entrar"} handleClick={openForms} />
       </nav>
     </>
   )
