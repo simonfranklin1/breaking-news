@@ -19,9 +19,11 @@ const SigninForm = () => {
         try {
             const data = await login(email, password);
 
-            if(data) {
+            if(data.token) {
                 localStorage.setItem("access_token", JSON.stringify({ token: data.token, id: data.id }));
                 getUser(data.id, data.token).then(response => setUser(response)).finally(navigate("/"))
+            } else {
+                return
             }
 
         } catch (error) {

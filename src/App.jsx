@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import { Home, Search, Authentication, SigninForm, SignupForm, News } from "./pages"
+import { Home, Search, Authentication, SigninForm, SignupForm, News, ProfilePage } from "./pages"
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
           <Route element={<News />}>
             <Route index path="/" element={<Home />} />
             <Route path="/search/:query" element={<Search />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Route>
 
           <Route element={<Authentication />} >

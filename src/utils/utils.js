@@ -56,6 +56,20 @@ export const getUser = async (id, token) => {
     return data;
 }
 
+export const getUserPosts = async(id, token) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/user/" + id, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await response.json();
+
+    return data;
+}
+
 export const login = async (email, password) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/auth", {
         method: "POST",
