@@ -7,7 +7,7 @@ import { useBreakingNews } from "../context/breakingNewsContext";
 const Navbar = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const { setBackground, setForm } = useBreakingNews();
+  const { setBackground, setForm, user } = useBreakingNews();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -35,7 +35,13 @@ const Navbar = () => {
           <img src={Logo} alt="Logo" className="w-[8rem] h-[3.5rem] object-cover cursor-pointer self-center" />
         </Link>
 
-        <CustomButton text={"entrar"} handleClick={openForms} />
+        {
+          user && (
+            <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full object-contain" />
+          ) || (
+            <CustomButton text={"entrar"} handleClick={openForms} />
+          )
+        }
       </nav>
     </>
   )

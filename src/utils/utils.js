@@ -41,3 +41,25 @@ export const getPostsBySearch = async (search) => {
 
     return data
 }
+
+export const login = async (id, token) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/user/findById/" + id, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await response.json();
+
+    console.log(data)
+
+    return data;
+}
+
+export const getLocalStorage = (key) => {
+    const data = localStorage.getItem(key);
+
+    return JSON.parse(data);
+}
