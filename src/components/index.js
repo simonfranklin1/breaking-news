@@ -7,7 +7,7 @@ import PostsContainer from "./NewsContainer";
 import FormWrapper from "./FormWrapper";
 import Background from "./Background";
 import SigninForm from "./SigninForm";
-
+import SignupForm from "./SignupForm";
 
 export {
     Navbar,
@@ -18,5 +18,6 @@ export {
     PostsContainer,
     FormWrapper,
     Background,
-    SigninForm
+    SigninForm,
+    SignupForm
 }

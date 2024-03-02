@@ -1,6 +1,7 @@
 import React from 'react'
 import { useBreakingNews } from '../context/breakingNewsContext'
 import SigninForm from './SigninForm'
+import SignupForm from './SignupForm'
 
 const FormWrapper = () => {
   const { background, form, setForm, setBackground } = useBreakingNews()
@@ -11,7 +12,7 @@ const FormWrapper = () => {
         form === "signin" && (
           <SigninForm />
         ) || form === "signup" && (
-          "Sign Up"
+          <SignupForm />
         ) || form === "createpost" && (
           "Create Post"
         ) || form === "editpost" && (
