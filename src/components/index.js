@@ -4,9 +4,7 @@ import Card from "./Card";
 import CustomButton from "./CustomButton";
 import HomeHeader from "./HomeHeader";
 import PostsContainer from "./NewsContainer";
-import FormWrapper from "./FormWrapper";
-import SigninForm from "./SigninForm";
-import SignupForm from "./SignupForm";
+import ProfileButton from "./ProfileButton";
 
 export {
     Navbar,
@@ -15,7 +13,5 @@ export {
     CustomButton,
     HomeHeader,
     PostsContainer,
-    FormWrapper,
-    SigninForm,
-    SignupForm
+    ProfileButton
 }

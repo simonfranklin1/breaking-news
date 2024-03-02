@@ -1,27 +1,21 @@
 import { useState } from "react";
 import Logo from "../assets/logo-breaking-news.png"
-import CustomButton from "./CustomButton"
 import { Link, useNavigate } from "react-router-dom"
-import { useBreakingNews } from "../context/breakingNewsContext";
+import ProfileButton from "./ProfileButton";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const { setBackground, setForm, user } = useBreakingNews();
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    if(search.length) {
-      navigate("/search/" + search) 
+    if (search.length) {
+      navigate("/search/" + search)
+      setSearch("")
     } else {
       return;
     }
-  }
-
-  const openForms = ( ) => {
-      setBackground(true);
-      setForm("signin")
   }
 
   return (
@@ -36,15 +30,7 @@ const Navbar = () => {
           <img src={Logo} alt="Logo" className="w-[8rem] h-[3.5rem] object-cover cursor-pointer self-center" />
         </Link>
 
-        {
-          user && (
-            <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full object-contain" />
-          ) || (
-            <Link to={"/auth"}>
-              <CustomButton text={"entrar"} />
-            </Link>
-          )
-        }
+        <ProfileButton />
       </nav>
     </>
   )

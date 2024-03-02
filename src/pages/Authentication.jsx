@@ -1,11 +1,12 @@
-import FormWrapper from '../components/FormWrapper'
+import { Outlet } from 'react-router-dom'
 
 const Authentication = () => {
 
     return (
         <>
-            <div className={`bg-black w-full h-full fixed top-0 left-0 opacity-20 z-20 block justify-center items-center`} />
-            <FormWrapper />
+            <div className={`bg-[#F1F1F1] w-[100vw] h-[100vh] flex justify-center items-center`}>
+                <Outlet />
+            </div>
         </>
     )
 }

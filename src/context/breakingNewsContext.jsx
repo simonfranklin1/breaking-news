@@ -5,9 +5,8 @@ import { getLocalStorage, getUser } from "../utils/utils";
 export const BreakingNewsContext = createContext();
 
 export const BreakingNewsContextProvider = ({ children }) => {
-    const [background, setBackground] = useState(false);
-    const [form, setForm] = useState("signin");
-    const [ token, setToken ] = useState(getLocalStorage("access_token") || null);
+    const [ background, setBackground ] = useState(false);
+    const [ form, setForm ] = useState("signin");
     const [ user, setUser ] = useState(null);
 
     const data = {
@@ -16,10 +15,12 @@ export const BreakingNewsContextProvider = ({ children }) => {
         form,
         setForm,
         user, 
-        setUser
+        setUser,
     }
 
     useEffect(() => {
+        const token = getLocalStorage("access_token");
+
         if(token) {
             getUser(token.id, token.token).then(response => setUser(response));
         }

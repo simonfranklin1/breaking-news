@@ -1,21 +1,22 @@
-import { Footer, Navbar } from "./components"
 import { Route, Routes } from "react-router-dom"
-import { Home, Search } from "./pages"
-import Authentication from "./pages/Authentication"
+import { Home, Search, Authentication, SigninForm, SignupForm, News } from "./pages"
 
 function App() {
 
   return (
-    <div className="App bg-[#F1F1F1] min-h-[100vh] w-full">
-      <Navbar />
-      <div className="pt-[115px] pb-[87px] w-[80%] mx-auto">
+    <div>
         <Routes >
-          <Route index path="/" element={<Home />} />
-          <Route path="/search/:query" element={<Search />} />
-          <Route path="/auth" element={<Authentication />} />
+          <Route element={<News />}>
+            <Route index path="/" element={<Home />} />
+            <Route path="/search/:query" element={<Search />} />
+          </Route>
+
+          <Route element={<Authentication />} >
+            <Route path="/signin" element={<SigninForm />} />
+            <Route path="/signup" element={<SignupForm />} />
+          </Route>
+
         </Routes>
-      </div>
-      <Footer />
     </div>
   )
 }

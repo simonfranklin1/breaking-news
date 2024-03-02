@@ -53,8 +53,6 @@ export const getUser = async (id, token) => {
 
     const data = await response.json();
 
-    console.log(data)
-
     return data;
 }
 
@@ -70,6 +68,8 @@ export const login = async (email, password) => {
     });
 
     const data = await response.json();
+
+    return data;
 }
 
 export const getLocalStorage = (key) => {

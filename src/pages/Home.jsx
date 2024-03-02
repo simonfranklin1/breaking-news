@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Card } from "../components";
 import { getAllPosts, getTopNews } from "../utils/utils";
 import HomeHeader from "../components/HomeHeader";
 import PostsContainer from "../components/NewsContainer";
@@ -25,7 +24,7 @@ const Home = () => {
             <PostsContainer posts={posts.results} />
           </>
         ) || (
-          <div className="text-lg w-full">...Loading</div>
+          <div className="text-xl w-full text-center">...Carregando</div>
         )
       }
     </div>
