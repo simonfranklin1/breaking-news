@@ -4,6 +4,7 @@ import SigninForm from "./SigninForm.jsx";
 import SignupForm from "./SignupForm.jsx";
 import Authentication from "./Authentication.jsx";
 import News from "./News.jsx";
+import ProfilePage from "./ProfilePage.jsx";
 
 export {
     Home,
@@ -11,5 +12,6 @@ export {
     Authentication,
     SigninForm,
     SignupForm,
-    News
+    News,
+    ProfilePage
 }
