@@ -8,7 +8,7 @@ import { useBreakingNews } from "../context/breakingNewsContext";
 const Navbar = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const { user } = useBreakingNews();
+  const { user, setUser } = useBreakingNews();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const Navbar = () => {
 
         {
           user && (
-            <ProfileButton user={user} />
+            <ProfileButton user={user} setUser={setUser} />
           ) || (
             <Link to={"/signin"}>
               <CustomButton text={"entrar"} />
