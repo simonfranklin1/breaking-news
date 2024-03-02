@@ -5,6 +5,9 @@ import CustomButton from "./CustomButton";
 import HomeHeader from "./HomeHeader";
 import PostsContainer from "./NewsContainer";
 import FormWrapper from "./FormWrapper";
+import Background from "./Background";
+import SigninForm from "./SigninForm";
+
 
 export {
     Navbar,
@@ -13,5 +16,7 @@ export {
     CustomButton,
     HomeHeader,
     PostsContainer,
-    FormWrapper
+    FormWrapper,
+    Background,
+    SigninForm
 }

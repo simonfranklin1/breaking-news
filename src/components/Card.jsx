@@ -19,11 +19,11 @@ const Card = ({ title, text, img, likes, comments, top = false }) => {
           </div>
           <div className="flex items-center gap-4">
             <div className='flex items-center gap-[.2rem]'>
-              <i class="bi bi-hand-thumbs-up"></i>
+              <i className="bi bi-hand-thumbs-up"></i>
               <span>{likes.length}</span>
             </div>
             <div className='flex items-center gap-[.2rem]'>
-              <i class="bi bi-chat"></i>
+              <i className="bi bi-chat"></i>
               <span>{comments.length}</span>
             </div>
           </div>
