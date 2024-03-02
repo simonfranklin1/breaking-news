@@ -9,7 +9,7 @@ function App() {
           <Route element={<News />}>
             <Route index path="/" element={<Home />} />
             <Route path="/search/:query" element={<Search />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/:id" element={<ProfilePage />} />
           </Route>
 
           <Route element={<Authentication />} >
