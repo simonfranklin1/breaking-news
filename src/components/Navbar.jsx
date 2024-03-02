@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Logo from "../assets/logo-breaking-news.png"
 import CustomButton from "./CustomButton"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -25,7 +25,9 @@ const Navbar = () => {
           <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Pesquise por um título" className="outline-none p-[0.6rem] bg-[#f5f5f5] border-none w-full rounded-[0.3rem] focus:border-[#0bade3] focus:border-[1px] focus:border-solid" />
         </form>
 
-        <img src={Logo} alt="Logo" className="w-[8rem] h-[3.5rem] object-cover cursor-pointer self-center" />
+        <Link to="/">
+          <img src={Logo} alt="Logo" className="w-[8rem] h-[3.5rem] object-cover cursor-pointer self-center" />
+        </Link>
 
         <CustomButton text={"entrar"} />
       </nav>

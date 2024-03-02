@@ -33,7 +33,7 @@ const Search = () => {
                     </>
                 ) || (
                     <div className="text-lg">...Loading</div>
-                )
+                ) 
             }
         </div>
     )
