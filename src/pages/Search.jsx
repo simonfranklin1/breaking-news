@@ -32,7 +32,7 @@ const Search = () => {
                         <PostsContainer posts={posts.results} search={true} />
                     </>
                 ) || !posts && (
-                    <div className="text-xl text-center mt-4">...Carregando</div>
+                    <div className="text-xl text-center mt-8">...Carregando</div>
                 ) || posts.message && (
                     <>
                         <div className="bg-white w-full h-[230px] rounded-md p-8 relative mb-4">

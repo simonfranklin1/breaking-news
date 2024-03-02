@@ -24,7 +24,7 @@ const Home = () => {
             <PostsContainer posts={posts.results} />
           </>
         ) || (
-          <div className="text-xl w-full text-center">...Carregando</div>
+          <div className="text-xl w-full text-center mt-8">...Carregando</div>
         )
       }
     </div>

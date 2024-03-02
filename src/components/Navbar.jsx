@@ -1,11 +1,14 @@
 import { useState } from "react";
-import Logo from "../assets/logo-breaking-news.png"
-import { Link, useNavigate } from "react-router-dom"
+import Logo from "../assets/logo-breaking-news.png";
+import { Link, useNavigate } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import CustomButton from "./CustomButton";
+import { useBreakingNews } from "../context/breakingNewsContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const { user } = useBreakingNews();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -30,7 +33,15 @@ const Navbar = () => {
           <img src={Logo} alt="Logo" className="w-[8rem] h-[3.5rem] object-cover cursor-pointer self-center" />
         </Link>
 
-        <ProfileButton />
+        {
+          user && (
+            <ProfileButton user={user} />
+          ) || (
+            <Link to={"/signin"}>
+              <CustomButton text={"entrar"} />
+            </Link>
+          )
+        }
       </nav>
     </>
   )
