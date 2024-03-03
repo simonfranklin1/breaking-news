@@ -28,7 +28,7 @@ const PostForm = ({ post, action, title, handleFunction }) => {
                 {errors.title?.message && <p className='text-red-600'>{errors.title?.message}</p>}
                 <input type="text" placeholder='Banner' {...register("banner")} className="px-2 py-1 border-2 rounded-sm" />
                 {errors.banner?.message && <p className='text-red-600'>{errors.banner?.message}</p>}
-                <textarea type="text" placeholder='Texto' {...register("text")} className="px-2 py-1 border-2 rounded-sm" />
+                <textarea type="text" placeholder='Texto' {...register("text")} className="px-2 py-1 border-2 rounded-sm h-[100px]" />
                 {errors.text?.message && <p className='text-red-600'>{errors.text?.message}</p>}
                 <CustomButton text={action} type={"submit"} />
             </div>

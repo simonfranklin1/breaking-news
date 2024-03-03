@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getPostById, getLocalStorage } from '../utils/utils';
+import { getPostById, getLocalStorage, updatePost } from '../utils/utils';
 import { Loading, PostForm } from '../components';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -13,12 +13,14 @@ const EditPost = () => {
         if (isLogged.token) {
             getPostById(id, isLogged.token).then(response => setPost(response.news));
         } else {
-            navigate("/")
+            navigate("/");
         }
     }, [id])
 
     const handleEdit = (values) => {
-        console.log(values)
+        updatePost(id, isLogged.token, values).then(() => {
+            navigate("/news/" + id)
+        });
     }
 
     return (

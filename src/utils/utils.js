@@ -105,7 +105,9 @@ export const updatePost = async(id, token, post) => {
             "Authorization": "Bearer " + token
         },
         body: JSON.stringify({
-            post
+            title: post.title,
+            text: post.text,
+            banner: post.banner
         })
     });
     
