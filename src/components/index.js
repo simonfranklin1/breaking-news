@@ -7,6 +7,7 @@ import PostsContainer from "./NewsContainer";
 import ProfileButton from "./ProfileButton";
 import Comment from "./Comment";
 import Loading from "./Loading";
+import PostForm from "./PostForm";
 
 export {
     Navbar,
@@ -17,5 +18,6 @@ export {
     PostsContainer,
     ProfileButton,
     Comment,
-    Loading
+    Loading,
+    PostForm
 }
