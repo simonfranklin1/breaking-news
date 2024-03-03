@@ -4,9 +4,11 @@ import { getPostById, getLocalStorage, limitText } from '../utils/utils';
 import CommentContainer from '../components/Comment';
 import { Link } from 'react-router-dom';
 import { Loading } from '../components';
+import { useBreakingNews } from '../context/breakingNewsContext';
 
 const NewsPage = () => {
-  const [post, setPost] = useState(null);
+  const { user } = useBreakingNews();
+  const [ post, setPost ] = useState(null);
   const { id } = useParams();
   const isLogged = getLocalStorage("access_token");
   const navigate = useNavigate();
@@ -55,7 +57,7 @@ const NewsPage = () => {
             </div>
           </div>
           <div className="flex flex-col p-5">
-            <div className="flex items-center gap-4 w-full py-6 border-b-2 border-t-2">
+            <div className="flex items-center gap-4 w-full py-5 border-b-2 border-t-2">
               <button className='flex items-center gap-[.2rem]'>
                 <i className="bi bi-hand-thumbs-up"></i>
                 <span>Gostei</span>
@@ -65,11 +67,10 @@ const NewsPage = () => {
                 <span>Comentar</span>
               </button>
             </div>
-            <div className='flex w-full'>
-              <input type="text" name="" id="" />
-              <button type="submit"></button>
-            </div>
-            <ul className="flex flex-col py-6">
+            <form className='flex w-full py-5'>
+              <input type="text" placeholder={"Adicione um comentário como " + user.username} className="outline-none p-[0.6rem] bg-[#f5f5f5] border-[transparent] w-full rounded-full focus:border-[#0bade3] border-[1px] focus:border-solid" />
+            </form>
+            <ul className="flex flex-col py-5">
               {
                 post.comments.length > 0 && (
                   post.comments.map((comment) => (
