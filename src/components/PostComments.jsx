@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import CommentContainer from '../components/Comment';
 
 const PostComments = ({ comments }) => {
+
     return (
         <>
             {

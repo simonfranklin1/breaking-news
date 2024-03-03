@@ -4,30 +4,36 @@ import { getPostById, getLocalStorage, limitText, commentPost } from '../utils/u
 import { Loading } from '../components';
 import { useBreakingNews } from '../context/breakingNewsContext';
 import PostContent from '../components/PostContent';
-import PostComments from '../components/PostComments';
 import PostInteractions from '../components/PostInteractions';
+import PostComments from '../components/PostComments';
 
 const NewsPage = () => {
   const { user } = useBreakingNews();
-  const [ post, setPost ] = useState(null);
-  const [ comment, setComment ] = useState("");
+  const [post, setPost] = useState(null);
+  const [comment, setComment] = useState("");
+
+  const [comments, setComments] = useState([]);
+
   const { id } = useParams();
   const isLogged = getLocalStorage("access_token");
   const navigate = useNavigate();
 
   const handleComment = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      if(comment.length) {
-        commentPost(post.id, isLogged.token, comment).then(response => id = response.news._id);
-        setComment("")
-      }
+    if (comment.length) {
+      commentPost(post.id, isLogged.token, comment).then(response => setComments(response.news.comments));
+      setComment("");
+    }
   }
 
   useEffect(() => {
     if (isLogged && isLogged.token) {
-      getPostById(id, isLogged.token).then(response => setPost(response.news));
-    } else  {
+      getPostById(id, isLogged.token).then((response) => {
+        setPost(response.news);
+        setComments(response.news.comments);
+      });
+    } else {
       navigate("/");
     }
 
@@ -43,8 +49,8 @@ const NewsPage = () => {
             <PostInteractions comment={comment} setComment={setComment} handleComment={handleComment} user={user} post={post} />
             <ul className="flex flex-col py-5 gap-5">
               {
-                post.comments.length > 0 && (
-                  <PostComments comments={post.comments} />
+                comments.length > 0 && (
+                  <PostComments comments={comments} />
                 ) || (
                   <div className="text-xl text-center">
                     Nenhum Comentário

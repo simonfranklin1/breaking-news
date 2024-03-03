@@ -137,7 +137,9 @@ export const commentPost = async(id, token, comment) => {
         })
     });
     
-    return response;
+    const data = await response.json();
+
+    return data
 }
 
 export const getLocalStorage = (key) => {
