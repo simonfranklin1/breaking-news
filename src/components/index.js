@@ -6,6 +6,7 @@ import HomeHeader from "./HomeHeader";
 import PostsContainer from "./NewsContainer";
 import ProfileButton from "./ProfileButton";
 import Comment from "./Comment";
+import Loading from "./Loading";
 
 export {
     Navbar,
@@ -15,5 +16,6 @@ export {
     HomeHeader,
     PostsContainer,
     ProfileButton,
-    Comment
+    Comment,
+    Loading
 }

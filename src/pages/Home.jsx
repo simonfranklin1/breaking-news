@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getAllPosts, getTopNews } from "../utils/utils";
 import HomeHeader from "../components/HomeHeader";
 import PostsContainer from "../components/NewsContainer";
+import { Loading } from "../components";
 
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
             <PostsContainer posts={posts.results} />
           </>
         ) || (
-          <div className="text-xl w-full text-center mt-8">...Carregando</div>
+          <Loading />
         )
       }
     </div>

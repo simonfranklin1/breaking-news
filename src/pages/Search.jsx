@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getPostsBySearch } from '../utils/utils';
-import { PostsContainer } from "../components"
+import { Loading, PostsContainer } from "../components"
 
 const Search = () => {
     const { query } = useParams();
@@ -32,7 +32,7 @@ const Search = () => {
                         <PostsContainer posts={posts.results} search={true} />
                     </>
                 ) || !posts && (
-                    <div className="text-xl text-center mt-8">...Carregando</div>
+                    <Loading />
                 ) || posts.message && (
                     <>
                         <div className="bg-white w-full h-[230px] rounded-md p-8 relative mb-4">

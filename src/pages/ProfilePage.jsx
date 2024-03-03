@@ -3,6 +3,7 @@ import { getLocalStorage, getUser, getUserPosts } from '../utils/utils';
 import ProfileImage from "../assets/alternative-image.png";
 import { useNavigate, useParams } from 'react-router-dom';
 import NewsContainer from "../components/NewsContainer";
+import { Loading } from '../components';
 
 const ProfilePage = () => {
     const { id } = useParams();
@@ -50,10 +51,16 @@ const ProfilePage = () => {
             </div>
 
             {
-                posts && (
+                posts && posts.results && (
                     <NewsContainer posts={posts.results} search={true} />
+                ) || !posts && (
+                    <Loading />
                 ) || (
-                    <div className="text-xl w-full text-center mt-8">...Carregando</div>
+                    posts.message && (
+                        <div className="text-xl text-center pt-8">
+                            Nenhum post encontrado
+                        </div>
+                    )
                 )
             }
         </>
