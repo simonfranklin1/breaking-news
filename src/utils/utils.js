@@ -1,5 +1,5 @@
 export const getAllPosts = async () => {
-    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news?limit=5&offset=1", {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news?limit=4&offset=1", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
