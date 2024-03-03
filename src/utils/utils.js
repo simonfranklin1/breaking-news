@@ -125,13 +125,28 @@ export const signup = async({ name, email, password, avatar, background }) => {
     return data;
 }
 
+export const commentPost = async(id, token, comment) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/comment" + id, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+            comment
+        })
+    });
+    
+    return response;
+}
+
 export const getLocalStorage = (key) => {
     const data = localStorage.getItem(key);
 
     return JSON.parse(data);
 }
 
-export function generateUserName(name) {
+function generateUserName(name) {
     const nameLowerCaseWithoutSpaces = name.replace(/\s/g, "").toLowerCase();
     const randomNumber = Math.floor(Math.random() * 1000);
     return `${nameLowerCaseWithoutSpaces}-${randomNumber}`;

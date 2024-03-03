@@ -15,7 +15,7 @@ const ProfilePage = () => {
     const loggedUser = isLogged ? isLogged.id : null;
 
     useEffect(() => {
-        if (isLogged.token) {
+        if (isLogged && isLogged.token) {
             getUser(id, isLogged.token).then(response => setUser(response));
 
             getUserPosts(id, isLogged.token).then(response => setPosts(response));

@@ -15,9 +15,9 @@ const NewsPage = () => {
 
 
   useEffect(() => {
-    if (isLogged.token) {
+    if (isLogged && isLogged.token) {
       getPostById(id, isLogged.token).then(response => setPost(response.news));
-    } else {
+    } else  {
       navigate("/");
     }
 
