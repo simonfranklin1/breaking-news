@@ -100,8 +100,39 @@ export const login = async (email, password) => {
     return data;
 }
 
+/*
+
+*/
+
+export const signup = async({ name, email, password, avatar, background }) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/user/create", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ 
+            name, 
+            username: generateUserName(name), 
+            email,  
+            password, 
+            avatar, 
+            background 
+        })
+    });
+
+    const data = await response.json();
+
+    return data;
+}
+
 export const getLocalStorage = (key) => {
     const data = localStorage.getItem(key);
 
     return JSON.parse(data);
 }
+
+export function generateUserName(name) {
+    const nameLowerCaseWithoutSpaces = name.replace(/\s/g, "").toLowerCase();
+    const randomNumber = Math.floor(Math.random() * 1000);
+    return `${nameLowerCaseWithoutSpaces}-${randomNumber}`;
+  }

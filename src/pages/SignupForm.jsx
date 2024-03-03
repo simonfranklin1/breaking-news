@@ -3,17 +3,36 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import CustomButton from "../components/CustomButton"
 import { useBreakingNews } from "../context/breakingNewsContext";
 import { signupSchema } from '../schemas/schemas';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signup, getUser, login } from '../utils/utils';
 
 const SignupForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(signupSchema)});
+    const { setUser } = useBreakingNews();
+    const navigate = useNavigate();
     
-    const signup = (data) => {
-        const { name, username, email, password, avatar, background } = data;
+    const createAccount = async (data) => {
+
+        const createUser = await signup(data);
+
+        if(createUser) {
+            const userData = await login(data.email, data.password);
+
+            if(userData.token) {
+                localStorage.setItem("access_token", JSON.stringify({ token: userData.token, id: userData.id }));
+                getUser(userData.id, userData.token).then(response => setUser(response)).finally(navigate("/"));
+                navigate("/")
+            } else {
+                return
+            }
+
+        } else {
+            return
+        }
     }
 
     return (
-        <form className='bg-white p-8 rounded-md sm:min-w-[400px] relative shadow-xl' onSubmit={handleSubmit(signup)}>
+        <form className='bg-white p-8 rounded-md sm:min-w-[400px] relative shadow-xl' onSubmit={handleSubmit(createAccount)}>
             <button type='button' className="text-xl font-bold absolute top-2 right-2">
                 <Link to={"/"}><i className="bi bi-x-lg"></i></Link>
             </button>
