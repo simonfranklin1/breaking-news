@@ -5,6 +5,7 @@ import CustomButton from "./CustomButton";
 import HomeHeader from "./HomeHeader";
 import PostsContainer from "./NewsContainer";
 import ProfileButton from "./ProfileButton";
+import Comment from "./Comment";
 
 export {
     Navbar,
@@ -13,5 +14,6 @@ export {
     CustomButton,
     HomeHeader,
     PostsContainer,
-    ProfileButton
+    ProfileButton,
+    Comment
 }

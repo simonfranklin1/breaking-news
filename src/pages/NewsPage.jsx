@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { getPostById, getLocalStorage, limitText } from '../utils/utils';
+import CommentContainer from '../components/Comment';
+import { Link } from 'react-router-dom';
 
 const NewsPage = () => {
   const [post, setPost] = useState(null);
   const { id } = useParams();
   const isLogged = getLocalStorage("access_token");
   const navigate = useNavigate();
+
 
   useEffect(() => {
     if (isLogged.token) {
@@ -30,9 +33,11 @@ const NewsPage = () => {
                   <p className={`text-justify lg:text-[1.5rem]`}>{limitText(post.text, top ? 120 : 80)}</p>
                 </div>
                 <div className='flex flex-col gap-1'>
-                  <div className="text-[#2C8AB4]">
-                    by @{post.creator.username}
-                  </div>
+                  <Link to={"/profile/" + post.creator.id}>
+                    <div className="text-[#2C8AB4]">
+                      by @{post.creator.username}
+                    </div>
+                  </Link>
                   <div className="flex items-center gap-4">
                     <div className='flex items-center gap-[.2rem]'>
                       <i className="bi bi-hand-thumbs-up"></i>
@@ -45,11 +50,11 @@ const NewsPage = () => {
                   </div>
                 </div>
               </article>
-              <img className='w-[40%] h-full lg:object-cover object-center rounded-md' src={post.banner} alt={post.title} />
+              <img className='w-[40%] h-full lg:object-cover object-center' src={post.banner} alt={post.title} />
             </div>
           </div>
           <div className="flex flex-col p-5">
-            <div className="flex items-center gap-4 w-full pb-6 border-b-2">
+            <div className="flex items-center gap-4 w-full py-6 border-b-2">
               <div className='flex items-center gap-[.2rem]'>
                 <i className="bi bi-hand-thumbs-up"></i>
                 <span>Gostei</span>
@@ -59,11 +64,9 @@ const NewsPage = () => {
                 <span>Comentar</span>
               </div>
             </div>
-            <ul className="flex flex-col pt-6">
+            <ul className="flex flex-col py-6">
               {post.comments.map((comment) => (
-                <li className="flex flex-col">
-                  {comment.idComment}
-                </li>
+                <CommentContainer key={comment.idComment} comment={comment} />
               ))}
             </ul>
           </div>
