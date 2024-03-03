@@ -13,6 +13,13 @@ export const signupSchema = z.object({
   background: z.string().min(3, { message: "Insira a URL da sua foto de fundo" })
 })
 
+export const userSchema = z.object({
+  name: z.string().min(3, { message: "O nome deve ter no mínimo 3 caracteres" }),
+  email: z.string().email({ message: "Email inválido" }),
+  avatar: z.string().min(3, { message: "Insira a URL da sua foto de perfil" }),
+  background: z.string().min(3, { message: "Insira a URL da sua foto de fundo" })
+})
+
 export const postSchema = z.object({
   title: z.string().min(3, { message: "Insira o título da notícia" }),
   text: z.string().min(3, { message: "Insira o texto da notícia" }),

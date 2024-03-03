@@ -1,18 +1,16 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CustomButton from "../components/CustomButton"
-import { signupSchema } from '../schemas/schemas';
+import { signupSchema, userSchema } from '../schemas/schemas';
 import { Link } from 'react-router-dom';
 
 const UserForm = ({ user, handleFunction, title, action }) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: zodResolver(signupSchema),
+        resolver: zodResolver(userSchema),
         defaultValues: {
             name: user ? user.name : "",
-            username: user ? user.username : "",
             email: user ? user.email : "",
-            password: user ? user.password : "",
             avatar: user ? user.avatar : "",
             background: user ? user.background : ""
         }
@@ -37,10 +35,6 @@ const UserForm = ({ user, handleFunction, title, action }) => {
                     {errors.email?.message && <p className='text-red-600'>{errors.email?.message}</p>}
                 </div>
                 <div className="w-full">
-                    <input type="password" placeholder='Senha' {...register("password")} className="px-2 py-1 border-2 rounded-sm w-full" />
-                    {errors.password?.message && <p className='text-red-600'>{errors.password?.message}</p>}
-                </div>
-                <div className="w-full">
                     <input type="text" placeholder='Link da foto de perfil' {...register("avatar")} className="px-2 py-1 border-2 rounded-sm w-full" />
                     {errors.avatar?.message && <p className='text-red-600'>{errors.avatar?.message}</p>}
                 </div>
@@ -49,9 +43,6 @@ const UserForm = ({ user, handleFunction, title, action }) => {
                     {errors.background?.message && <p className='text-red-600'>{errors.background?.message}</p>}
                 </div>
                 <CustomButton text={action} type={"submit"} />
-            </div>
-            <div className='text-center'>
-                Já tem uma conta? <span className="text-blue-500 font-semibold hover:underline cursor-pointer"><Link to="/signin">Faça Login</Link></span>
             </div>
         </form>
     )

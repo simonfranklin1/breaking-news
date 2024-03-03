@@ -183,6 +183,27 @@ export const getUser = async (id, token) => {
     return data;
 }
 
+export const editUser = async(id, token, user) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/user/update/" + id, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            avatar: user.avatar,
+            background: user.background
+        })
+    })
+
+    const data = await response.json();
+
+    return data;
+}
+
 // Utils
 
 export const getLocalStorage = (key) => {

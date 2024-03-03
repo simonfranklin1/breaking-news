@@ -22,7 +22,7 @@ const ProfilePage = () => {
         } else {
             navigate("/");
         }
-    }, []);
+    }, [id]);
 
     return (
         <>
@@ -31,7 +31,7 @@ const ProfilePage = () => {
                     <div className="absolute bg-white w-[172px] h-[172px] rounded-full overflow-hidden border-[5px] border-white z-10">
                         <img src={user ? user.avatar : ProfileImage} alt="profile" className='object-cover w-full h-full' />
                     </div>
-                    <button className={`w-[40px] h-[40px] rounded-full bg-white text-[#2C8AB4] text-xl self-end ${id === loggedUser ? "flex" : "hidden"} justify-center items-center hover:scale-105 duration-300 cursor-pointer`}>
+                    <button className={`w-[40px] h-[40px] rounded-full bg-white text-[#2C8AB4] text-xl self-end ${id === loggedUser ? "flex" : "hidden"} justify-center items-center hover:scale-105 duration-300 cursor-pointer`} onClick={() => navigate("/editUser/" + isLogged.id)}>
                         <i className="bi bi-pencil-square"></i>
                     </button>
                 </div>

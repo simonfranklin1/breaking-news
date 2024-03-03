@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import { Home, Search, Authentication, SigninForm, SignupForm, News, ProfilePage, NewsPage, EditPost } from "./pages"
+import { Home, Search, Authentication, SigninForm, SignupForm, News, ProfilePage, NewsPage, EditPost, EditUser } from "./pages"
 
 function App() {
 
@@ -17,6 +17,7 @@ function App() {
             <Route path="/signin" element={<SigninForm />} />
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/editPost/:id" element={<EditPost />} />
+            <Route path="/editUser/:id" element={<EditUser />} />
           </Route>
 
         </Routes>
