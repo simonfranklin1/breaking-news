@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CustomButton from "../components/CustomButton"
-import { signupSchema, userSchema } from '../schemas/schemas';
+import { userSchema } from '../schemas/schemas';
 import { Link } from 'react-router-dom';
 
 const UserForm = ({ user, handleFunction, title, action }) => {

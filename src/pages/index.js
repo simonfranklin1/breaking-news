@@ -8,6 +8,7 @@ import ProfilePage from "./ProfilePage.jsx";
 import NewsPage from "./NewsPage.jsx";
 import EditPost from "./EditPost.jsx";
 import EditUser from "./EditUser.jsx";
+import CreatePost from "./CreatePost.jsx";
 
 export {
     Home,
@@ -19,5 +20,6 @@ export {
     ProfilePage,
     NewsPage,
     EditPost,
-    EditUser
+    EditUser,
+    CreatePost
 }

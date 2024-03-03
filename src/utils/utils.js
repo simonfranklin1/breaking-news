@@ -66,6 +66,25 @@ export const getPostById = async(id, token) => {
     return data;    
 }
 
+export const createPost = async(token, post) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/create", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+            title: post.title,
+            text: post.text,
+            banner: post.banner
+        })
+    });
+
+    const data = await response.json();
+
+    return data;   
+}
+
 export const commentPost = async(id, token, comment) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/comment/" + id, {
         method: "PATCH",

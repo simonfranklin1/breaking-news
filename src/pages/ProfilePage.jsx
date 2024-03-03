@@ -44,7 +44,7 @@ const ProfilePage = () => {
                             @{user ? user.username : "...carregando"}
                         </div>
                     </div>
-                    <button className={`h-[30.48px] w-[30.48px] bg-[#2C8AB4] text-white text-xl self-end flex justify-center items-center rounded-full ${id === loggedUser ? "flex" : "hidden"} justify-center items-center hover:scale-105 duration-300 cursor-pointer`}>
+                    <button className={`h-[30.48px] w-[30.48px] bg-[#2C8AB4] text-white text-xl self-end flex justify-center items-center rounded-full ${id === loggedUser ? "flex" : "hidden"} justify-center items-center hover:scale-105 duration-300 cursor-pointer`} onClick={() => navigate("/createPost")}>
                         <i className="bi bi-plus-lg"></i>
                     </button>
                 </div>
