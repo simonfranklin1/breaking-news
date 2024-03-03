@@ -70,6 +70,20 @@ export const getUserPosts = async(id, token) => {
     return data;
 }
 
+export const getPostById = async(id, token) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/find/" + id, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await response.json();
+
+    return data;    
+}
+
 export const login = async (email, password) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/auth", {
         method: "POST",
