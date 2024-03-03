@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const PostContent = ({ post }) => {
+const PostContent = ({ post, comments, likes }) => {
   return (
     <div className={`flex flex-col cursor-pointer w-full min-h-[400px] mb-5`}>
             <div className="flex justify-between w-full h-full flex-1 gap-5">
@@ -18,16 +18,16 @@ const PostContent = ({ post }) => {
                   <div className="flex items-center gap-4">
                     <div className='flex items-center gap-[.2rem]'>
                       <i className="bi bi-hand-thumbs-up"></i>
-                      <span>{post.likes.length}</span>
+                      <span>{likes.length}</span>
                     </div>
                     <div className='flex items-center gap-[.2rem]'>
                       <i className="bi bi-chat"></i>
-                      <span>{post.comments.length}</span>
+                      <span>{comments.length}</span>
                     </div>
                   </div>
                 </div>
               </article>
-              <img className='w-[40%] flex-1 object-cover object-center' src={post.banner} alt={post.title} />
+              <img className='max-w-[40%] flex-1 object-cover object-center' src={post.banner} alt={post.title} />
             </div>
           </div>
   )

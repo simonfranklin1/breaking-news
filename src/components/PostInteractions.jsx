@@ -1,17 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const PostInteractions = ({ handleComment, user, comment, setComment, post }) => {
-    const [liked, setLiked] = useState(false);
-
-    useEffect(() => {
-        const alreadyLiked = post.likes.find((id) => id === user.id);
-
-        if (alreadyLiked) {
-            setLiked(true)
-        }
-
-    }, [liked]);
-
+const PostInteractions = ({ handleComment, username, comment, setComment, handleLike, alreadyLiked }) => {
 
     const focusInput = () => {
         document.getElementById("comment-input").focus()
@@ -20,9 +9,9 @@ const PostInteractions = ({ handleComment, user, comment, setComment, post }) =>
     return (
         <>
             <div className="flex items-center gap-4 w-full py-5 border-b-2 border-t-2">
-                <button className='flex items-center gap-[.2rem]' onClick={() => setLiked(prev => !prev)}>
+                <button className='flex items-center gap-[.2rem]' onClick={handleLike}>
                     {
-                        liked && (
+                        alreadyLiked && (
                             <>
                                 <i className="bi bi-hand-thumbs-up-fill"></i>
                                 <span>Gostei</span>
@@ -41,7 +30,7 @@ const PostInteractions = ({ handleComment, user, comment, setComment, post }) =>
                 </button>
             </div>
             <form className='flex w-full py-5' onSubmit={handleComment}>
-                <input type="text" id='comment-input' placeholder={"Adicione um comentário como " + user.username} value={comment} onChange={(e) => setComment(e.target.value)} className="outline-none p-[0.6rem] bg-[#f5f5f5] border-[transparent] w-full rounded-full focus:border-[#0bade3] border-[1px] focus:border-solid" />
+                <input type="text" id='comment-input' placeholder={"Adicione um comentário como " + username} value={comment} onChange={(e) => setComment(e.target.value)} className="outline-none p-[0.6rem] bg-[#f5f5f5] border-[transparent] w-full rounded-full focus:border-[#0bade3] border-[1px] focus:border-solid" />
             </form>
         </>
     )

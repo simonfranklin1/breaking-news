@@ -100,10 +100,6 @@ export const login = async (email, password) => {
     return data;
 }
 
-/*
-
-*/
-
 export const signup = async({ name, email, password, avatar, background }) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/user/create", {
         method: "POST",
@@ -135,6 +131,20 @@ export const commentPost = async(id, token, comment) => {
         body: JSON.stringify({
             comment
         })
+    });
+    
+    const data = await response.json();
+
+    return data
+}
+
+export const likePost = async(id, token) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/like/" + id, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
     });
     
     const data = await response.json();

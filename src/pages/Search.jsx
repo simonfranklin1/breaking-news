@@ -18,7 +18,7 @@ const Search = () => {
                     <>
                         <div className="bg-white w-full h-[230px] rounded-md p-8 relative mb-4">
                             <Link to={"/"}>
-                                <i class="bi bi-arrow-left-circle absolute top-2 left-2 text-xl cursor-pointer"></i>
+                                <i className="bi bi-arrow-left-circle absolute top-2 left-2 text-xl cursor-pointer"></i>
                             </Link>
                             <div className="flex flex-col h-full justify-evenly">
                                 <div className="text-base">
@@ -37,7 +37,7 @@ const Search = () => {
                     <>
                         <div className="bg-white w-full h-[230px] rounded-md p-8 relative mb-4">
                             <Link to={"/"}>
-                                <i class="bi bi-arrow-left-circle absolute top-2 left-2 text-xl cursor-pointer"></i>
+                                <i className="bi bi-arrow-left-circle absolute top-2 left-2 text-xl cursor-pointer"></i>
                             </Link>
                             <div className="flex flex-col h-full justify-evenly">
                                 <div className="text-base">
