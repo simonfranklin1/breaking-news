@@ -80,7 +80,7 @@ const NewsPage = () => {
             <div className='relative'>
               <i className="bi bi-three-dots-vertical"></i>
               <div className={`absolute bg-white overflow-hidden ${openMenu ? "flex opacity-100" : "hidden opacity-0"} duration-[.4s] ease-in-out rounded-md items-start flex-col shadow-xl top-[40px] text-base right-0 text-black`}>
-                <Link to={"/editPost/" + post.id}>
+                <Link to={"/editPost/" + post.id} className='w-full'>
                   <div className='flex items-end gap-2 hover:bg-slate-100 duration-200 pb-2 pt-4 px-8 w-full'>
                     <i className="bi bi-pencil-square"></i> Editar
                   </div>

@@ -8,6 +8,7 @@ import ProfileButton from "./ProfileButton";
 import Comment from "./Comment";
 import Loading from "./Loading";
 import PostForm from "./PostForm";
+import UserForm from "./UserForm";
 
 export {
     Navbar,
@@ -19,5 +20,6 @@ export {
     ProfileButton,
     Comment,
     Loading,
-    PostForm
+    PostForm,
+    UserForm
 }
