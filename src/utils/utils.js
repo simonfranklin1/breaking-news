@@ -126,7 +126,7 @@ export const signup = async({ name, email, password, avatar, background }) => {
 }
 
 export const commentPost = async(id, token, comment) => {
-    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/comment" + id, {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/comment/" + id, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",

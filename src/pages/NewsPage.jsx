@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { getPostById, getLocalStorage, limitText } from '../utils/utils';
+import { getPostById, getLocalStorage, limitText, commentPost } from '../utils/utils';
 import CommentContainer from '../components/Comment';
 import { Link } from 'react-router-dom';
 import { Loading } from '../components';
@@ -9,10 +9,18 @@ import { useBreakingNews } from '../context/breakingNewsContext';
 const NewsPage = () => {
   const { user } = useBreakingNews();
   const [ post, setPost ] = useState(null);
+  const [ comment, setComment ] = useState("");
   const { id } = useParams();
   const isLogged = getLocalStorage("access_token");
   const navigate = useNavigate();
 
+  const handleComment = (e) => {
+      e.preventDefault();
+
+      if(comment.length) {
+        commentPost(post.id, isLogged.token, comment)
+      }
+  }
 
   useEffect(() => {
     if (isLogged && isLogged.token) {
@@ -67,8 +75,8 @@ const NewsPage = () => {
                 <span>Comentar</span>
               </button>
             </div>
-            <form className='flex w-full py-5'>
-              <input type="text" placeholder={"Adicione um comentário como " + user.username} className="outline-none p-[0.6rem] bg-[#f5f5f5] border-[transparent] w-full rounded-full focus:border-[#0bade3] border-[1px] focus:border-solid" />
+            <form className='flex w-full py-5' onSubmit={handleComment}>
+              <input type="text" placeholder={"Adicione um comentário como " + user.username} value={comment} onChange={(e) => setComment(e.target.value)} className="outline-none p-[0.6rem] bg-[#f5f5f5] border-[transparent] w-full rounded-full focus:border-[#0bade3] border-[1px] focus:border-solid" />
             </form>
             <ul className="flex flex-col py-5">
               {
