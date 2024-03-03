@@ -1,3 +1,5 @@
+// Posts
+
 export const getAllPosts = async () => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news?limit=4&offset=1", {
         method: "GET",
@@ -23,12 +25,6 @@ export const getTopNews = async () => {
     return data;
 }
 
-export const limitText = (str, number) => {
-    if (str.length < number) return str
-
-    return str.substring(0, number) + "...";
-}
-
 export const getPostsBySearch = async (search) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/search?title=" + search, {
         method: "GET",
@@ -40,20 +36,6 @@ export const getPostsBySearch = async (search) => {
     const data = await response.json();
 
     return data
-}
-
-export const getUser = async (id, token) => {
-    const response = await fetch("https://api-breakingnews-08eu.onrender.com/user/findById/" + id, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
-        }
-    });
-
-    const data = await response.json();
-
-    return data;
 }
 
 export const getUserPosts = async(id, token) => {
@@ -83,6 +65,56 @@ export const getPostById = async(id, token) => {
 
     return data;    
 }
+
+export const commentPost = async(id, token, comment) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/comment/" + id, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+            comment
+        })
+    });
+    
+    const data = await response.json();
+
+    return data;
+}
+
+export const likePost = async(id, token) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/like/" + id, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+    
+    const data = await response.json();
+
+    return data;
+}
+
+export const updatePost = async(id, token, post) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/update/" + id, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+            post
+        })
+    });
+    
+    const data = await response.json();
+
+    return data;
+}
+
+// Users
 
 export const login = async (email, password) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/auth", {
@@ -121,41 +153,32 @@ export const signup = async({ name, email, password, avatar, background }) => {
     return data;
 }
 
-export const commentPost = async(id, token, comment) => {
-    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/comment/" + id, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
-        },
-        body: JSON.stringify({
-            comment
-        })
-    });
-    
-    const data = await response.json();
-
-    return data
-}
-
-export const likePost = async(id, token) => {
-    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/like/" + id, {
-        method: "PATCH",
+export const getUser = async (id, token) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/user/findById/" + id, {
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + token
         }
     });
-    
+
     const data = await response.json();
 
-    return data
+    return data;
 }
+
+// Utils
 
 export const getLocalStorage = (key) => {
     const data = localStorage.getItem(key);
 
     return JSON.parse(data);
+}
+
+export const limitText = (str, number) => {
+    if (str.length < number) return str
+
+    return str.substring(0, number) + "...";
 }
 
 function generateUserName(name) {

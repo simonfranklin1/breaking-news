@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getPostById, getLocalStorage } from '../utils/utils';
-import { Loading } from '../components';
-import PostForm from '../components';
+import { Loading, PostForm } from '../components';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const EditPost = () => {
@@ -11,7 +10,7 @@ const EditPost = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(isLogged.token) {
+        if (isLogged.token) {
             getPostById(id, isLogged.token).then(response => setPost(response.news));
         } else {
             navigate("/")
@@ -24,11 +23,13 @@ const EditPost = () => {
 
     return (
         <>
-            {post && (
-                <PostForm post={post} action={handleEdit} />
-            ) || (
+            {
+                post && (
+                    <PostForm post={post} action={"ATUALIZAR"} handleFunction={handleEdit} title={"Editar Notícia"} />
+                ) || (
                     <Loading />
-                )}
+                )
+            }
         </>
     )
 }
