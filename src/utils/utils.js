@@ -116,6 +116,20 @@ export const updatePost = async(id, token, post) => {
     return data;
 }
 
+export const deletePost = async(id, token) => {
+    const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/delete/" + id, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await response.json();
+
+    return data;
+}
+
 // Users
 
 export const login = async (email, password) => {
