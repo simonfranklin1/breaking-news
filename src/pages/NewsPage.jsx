@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { getPostById, getLocalStorage, commentPost, likePost, deletePost } from '../utils/utils';
+import { getPostById, getLocalStorage, commentPost, likePost, deletePost, deleteComment } from '../utils/utils';
 import { Loading } from '../components';
 import { useBreakingNews } from '../context/breakingNewsContext';
 import PostContent from '../components/PostContent';
@@ -23,7 +23,7 @@ const NewsPage = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   useEffect(() => {
-    if (user && isLogged && isLogged.token) {
+    if (isLogged && isLogged.token) {
       getPostById(id, isLogged.token).then((response) => {
         setPost(response.news);
         setComments(response.news.comments);
@@ -71,6 +71,14 @@ const NewsPage = () => {
     }
   }
 
+  const handleDeleteComment = async(idComment) => {
+    const response = await deleteComment(id, isLogged.token, idComment).then(() => {
+      const filteredComments = comments.filter((comment) => comment.idComment !== idComment);
+
+      setComments(filteredComments);
+    })
+  }
+
 
   return (
     <>
@@ -97,7 +105,7 @@ const NewsPage = () => {
             <ul className="flex flex-col py-5 gap-5">
               {
                 comments.length > 0 && (
-                  <PostComments comments={comments} />
+                  <PostComments comments={comments} user={isLogged} handleDeleteComment={handleDeleteComment} />
                 ) || (
                   <div className="text-xl text-center">
                     Nenhum Comentário

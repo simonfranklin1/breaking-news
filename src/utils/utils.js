@@ -102,6 +102,20 @@ export const commentPost = async(id, token, comment) => {
     return data;
 }
 
+export const deleteComment = async(id, token, idComment) => {
+    const response = await fetch(`https://api-breakingnews-08eu.onrender.com/news/comment/delete/${id}/${idComment}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+    
+    const data = await response.json();
+
+    return data;
+}
+
 export const likePost = async(id, token) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/like/" + id, {
         method: "PATCH",
