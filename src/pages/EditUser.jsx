@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { editUser, getUser, getLocalStorage } from "../utils/utils"
 import UserForm from "../components/UserForm";
 import { Loading } from "../components";
+import { toast } from "react-toastify";
 
 const EditUser = () => {
   const { id } = useParams();
@@ -19,7 +20,10 @@ const EditUser = () => {
   }, [id])
 
   const handleEdit = (values) => {
-    editUser(id, isLogged.token, values).then(() => navigate("/profile/" + id))
+    editUser(id, isLogged.token, values).then((response) => {
+      toast.success(response.message);
+      navigate("/profile/" + id);
+    })
   }
 
   return (

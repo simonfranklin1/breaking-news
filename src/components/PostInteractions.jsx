@@ -9,22 +9,22 @@ const PostInteractions = ({ handleComment, username, comment, setComment, handle
     return (
         <>
             <div className="flex items-center gap-4 w-full py-5 border-b-2 border-t-2">
-                <button className='flex items-center gap-[.2rem]' onClick={handleLike}>
+                <button className='flex items-center gap-1 hover:text-blue-500' onClick={handleLike}>
                     {
                         alreadyLiked && (
-                            <div className='hover:text-blue-500'>
+                            <>
                                 <i className="bi bi-hand-thumbs-up-fill"></i>
                                 <span>Gostei</span>
-                            </div>
+                            </>
                         ) || (
-                            <div className='hover:text-blue-500'>
+                            <>
                                 <i className="bi bi-hand-thumbs-up"></i>
                                 <span>Gostei</span>
-                            </div>
+                            </>
                         )
                     }
                 </button>
-                <button className='flex items-center gap-[.2rem] hover:text-blue-500' onClick={focusInput}>
+                <button className='flex items-center gap-1 hover:text-blue-500' onClick={focusInput}>
                     <i className="bi bi-chat"></i>
                     <span>Comentar</span>
                 </button>

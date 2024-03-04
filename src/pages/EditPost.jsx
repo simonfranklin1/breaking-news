@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getPostById, getLocalStorage, updatePost } from '../utils/utils';
 import { Loading, PostForm } from '../components';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const EditPost = () => {
     const { id } = useParams();
@@ -18,7 +19,8 @@ const EditPost = () => {
     }, [id])
 
     const handleEdit = (values) => {
-        updatePost(id, isLogged.token, values).then(() => {
+        updatePost(id, isLogged.token, values).then((response) => {
+            toast.success(response.message)
             navigate("/news/" + id)
         });
     }
