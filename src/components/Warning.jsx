@@ -40,7 +40,7 @@ const Warning = () => {
                             </div>
                             <div className="flex justify-end gap-4">
                                 <CustomButton text={"Sim"} type={"button"} handleClick={() => handleDelete(id)} />
-                                <button className="text-white bg-slate-400 border-none outline-none text-[1rem] rounded-md font-medium py-2 px-4 uppercase ease-in-out duration-[0.4s] hover:bg-slate-600" onClick={() => { navigate("/signin"), setWarning("")}}>
+                                <button className="text-white bg-slate-400 border-none outline-none text-[1rem] rounded-md font-medium py-2 px-4 uppercase ease-in-out duration-[0.4s] hover:bg-slate-600" onClick={() => {setWarning("")}}>
                                     NÃO
                                 </button>
                             </div>

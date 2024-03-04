@@ -8,7 +8,7 @@ import PostInteractions from '../components/PostInteractions';
 import PostComments from '../components/PostComments';
 
 const NewsPage = () => {
-  const { user } = useBreakingNews();
+  const { user, setWarning } = useBreakingNews();
   const [post, setPost] = useState(null);
   const [comment, setComment] = useState("");
 
@@ -63,7 +63,9 @@ const NewsPage = () => {
     })
   }
 
-  
+  const handleDelete = async() => {
+    setWarning("Delete")
+  }
 
   const handleDeleteComment = async(idComment) => {
     const response = await deleteComment(id, isLogged.token, idComment).then(() => {
