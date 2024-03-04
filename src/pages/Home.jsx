@@ -3,7 +3,6 @@ import { getAllPosts, getTopNews } from "../utils/utils";
 import HomeHeader from "../components/HomeHeader";
 import PostsContainer from "../components/NewsContainer";
 import { Loading } from "../components";
-import { useBreakingNews } from "../context/breakingNewsContext";
 
 
 const Home = () => {

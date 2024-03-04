@@ -5,6 +5,7 @@ import { useBreakingNews } from "../context/breakingNewsContext";
 import { signupSchema } from '../schemas/schemas';
 import { Link, useNavigate } from 'react-router-dom';
 import { signup, getUser, login } from '../utils/utils';
+import { toast } from "react-toastify";
 
 const SignupForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(signupSchema)});
@@ -16,6 +17,7 @@ const SignupForm = () => {
         const createUser = await signup(data);
 
         if(createUser) {
+            toast.success(createUser.message);
             const userData = await login(data.email, data.password);
 
             if(userData.token) {

@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom"
 import { Home, Search, Authentication, SigninForm, SignupForm, News, ProfilePage, NewsPage, EditPost, EditUser, CreatePost } from "./pages"
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer } from "react-toastify"
 
-import 'react-toastify/dist/ReactToastify.css'
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
 
   return (
     <div>
       <ToastContainer
-        position='bottom-right'
+        position="bottom-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
