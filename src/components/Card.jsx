@@ -21,7 +21,7 @@ const Card = ({ id, title, text, banner, likes, comments, creator, top = false }
         <div className="flex justify-between w-full h-full">
           <article className="flex flex-col justify-between p-5">
             <div className="flex flex-col w-full">
-              <h2 className={`mb-4 font-bold ${top ? "lg:text-[3rem] lg:leading-[3rem]" : "lg:text-[1.5rem] leading-[1.5rem] text-lg"}`}>{title}</h2>
+              <h2 className={`mb-4 font-bold ${top ? "lg:text-[3rem] lg:leading-[3.3rem]" : "lg:text-[1.5rem] leading-[1.5rem] text-lg"}`}>{title}</h2>
               <p className={`text-justify ${top ? "lg:text-[1.5rem]" : "text-[.9rem]"}`}>{limitText(text, top ? 120 : 80)}</p>
             </div>
             <div className='flex flex-col gap-1'>
@@ -40,7 +40,7 @@ const Card = ({ id, title, text, banner, likes, comments, creator, top = false }
               </div>
             </div>
           </article>
-          <img className='w-[40%] h-full lg:object-cover object-center rounded-md' src={banner} alt={banner} />
+          <img className='w-[40%] h-full lg:object-cover object-center' src={banner} alt={banner} />
         </div>
       </div>
     </div>
