@@ -6,6 +6,7 @@ import { useBreakingNews } from '../context/breakingNewsContext';
 import PostContent from '../components/PostContent';
 import PostInteractions from '../components/PostInteractions';
 import PostComments from '../components/PostComments';
+import {toast} from 'react-toastify'
 
 const NewsPage = () => {
   const { user, setWarning } = useBreakingNews();
@@ -45,7 +46,10 @@ const NewsPage = () => {
     e.preventDefault();
 
     if (comment.length) {
-      commentPost(post.id, isLogged.token, comment).then(response => setComments(response.news.comments));
+      commentPost(post.id, isLogged.token, comment).then((response) => {
+        setComments(response.news.comments);
+        toast.success(response.message);
+      }).catch((err) => toast.error(err.message));
       setComment("");
     }
   }
@@ -55,10 +59,12 @@ const NewsPage = () => {
       if (response.message === "Liked post successfully.") {
         setLikes([...likes, { userId: user.id, createdAt: new Date() }]);
         setAlreadyLiked(true);
+        toast.success(response.message)
       } else {
         const removeLike = likes.filter((like) => like.userId !== user.id)
         setLikes(removeLike);
         setAlreadyLiked(false);
+        toast.success(response.message);
       }
     })
   }
@@ -68,11 +74,11 @@ const NewsPage = () => {
   }
 
   const handleDeleteComment = async(idComment) => {
-    const response = await deleteComment(id, isLogged.token, idComment).then(() => {
+    const response = await deleteComment(id, isLogged.token, idComment).then((response) => {
       const filteredComments = comments.filter((comment) => comment.idComment !== idComment);
-
-      setComments(filteredComments);
-    })
+      toast.success(response.message)
+      setComments(filteredComments)
+    }).catch((err) => toast.error(err.message))
   }
 
 

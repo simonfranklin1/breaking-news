@@ -9,11 +9,11 @@ function App() {
   return (
     <div>
       <ToastContainer
-        position='1op-right'
+        position='bottom-right'
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
-        closeOnClick
+        closeOnClick={true}
         rtl={false}
         pauseOnFocusLoss
         draggable
