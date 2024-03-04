@@ -25,6 +25,7 @@ const SigninForm = () => {
                 toast.success(data.message);
                 getUser(data.id, data.token).then(response => setUser(response));
                 localStorage.setItem("access_token", JSON.stringify({ token: data.token, id: data.id }));
+                navigate("/");
             } else {
                 return
             }
@@ -33,7 +34,6 @@ const SigninForm = () => {
             console.log(error.message)
         } finally {
             setLoading(false);
-            navigate("/");
         }
 
     }

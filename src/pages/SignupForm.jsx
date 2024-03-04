@@ -18,13 +18,13 @@ const SignupForm = () => {
             const createUser = await signup(values);
 
             if (createUser) {
-                toast.success(createUser.message);
                 const userData = await login(values.email, values.password);
 
                 if (userData.token) {
                     localStorage.setItem("access_token", JSON.stringify({ token: userData.token, id: userData.id }));
                     getUser(userData.id, userData.token).then((response) => {
                         setUser(response);
+                        toast.success(createUser.message);
                         navigate("/");
                         setLoading(false);
                     })
