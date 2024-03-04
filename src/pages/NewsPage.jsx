@@ -80,9 +80,8 @@ const NewsPage = () => {
         const filteredComments = comments.filter((comment) => comment.idComment !== idComment);
         toast.success(response.message);
         setComments(filteredComments);
-      }).catch((err) => toast.error(err.message))
+      }).catch((err) => toast.error(err.message));
   }
-
 
   return (
     <>

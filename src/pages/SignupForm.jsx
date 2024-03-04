@@ -8,28 +8,32 @@ import { signup, getUser, login } from '../utils/utils';
 import { toast } from "react-toastify";
 
 const SignupForm = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(signupSchema)});
-    const { setUser } = useBreakingNews();
+    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(signupSchema) });
+    const { setUser, setLoading, loading } = useBreakingNews();
     const navigate = useNavigate();
-    
-    const createAccount = async (data) => {
 
-        const createUser = await signup(data);
+    const createAccount = async (values) => {
+        setLoading(true);
+        try {
+            const createUser = await signup(values);
 
-        if(createUser) {
-            toast.success(createUser.message);
-            const userData = await login(data.email, data.password);
+            if (createUser) {
+                toast.success(createUser.message);
+                const userData = await login(values.email, values.password);
 
-            if(userData.token) {
-                localStorage.setItem("access_token", JSON.stringify({ token: userData.token, id: userData.id }));
-                getUser(userData.id, userData.token).then(response => setUser(response)).finally(navigate("/"));
-                navigate("/")
-            } else {
-                return
+                if (userData.token) {
+                    localStorage.setItem("access_token", JSON.stringify({ token: userData.token, id: userData.id }));
+                    getUser(userData.id, userData.token).then((response) => {
+                        setUser(response);
+                        navigate("/");
+                        setLoading(false);
+                    })
+                } else {
+                    return setLoading(false);
+                }
             }
-
-        } else {
-            return
+        } catch (error) {
+            toast.error(error.message);
         }
     }
 
@@ -59,10 +63,16 @@ const SignupForm = () => {
                     {errors.avatar?.message && <p className='text-red-600'>{errors.avatar?.message}</p>}
                 </div>
                 <div className="w-full">
-                    <input type="text" placeholder='Link da imagem de fundo' {...register("background", { required: true, minLength: 8})} className="px-2 py-1 border-2 rounded-sm w-full" />
+                    <input type="text" placeholder='Link da imagem de fundo' {...register("background", { required: true, minLength: 8 })} className="px-2 py-1 border-2 rounded-sm w-full" />
                     {errors.background?.message && <p className='text-red-600'>{errors.background?.message}</p>}
                 </div>
-                <CustomButton text={"CADASTRAR"} type={"submit"} />
+                {
+                    loading && (
+                        <CustomButton text={"...Criando usuário"} type={"button"} loading={true} />
+                    ) || (
+                        <CustomButton text={"CADASTRAR"} type={"submit"} />
+                    )
+                }
             </div>
             <div className='text-center'>
                 Já tem uma conta? <span className="text-blue-500 font-semibold hover:underline cursor-pointer"><Link to="/signin">Faça Login</Link></span>

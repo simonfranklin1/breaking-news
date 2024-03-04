@@ -14,8 +14,8 @@ const SigninForm = () => {
     const navigate = useNavigate();
     const { setUser, setLoading, loading } = useBreakingNews();
 
-    const handleSignIn = async (data) => {
-        const { email, password } = data;
+    const handleSignIn = async (values) => {
+        const { email, password } = values;
 
         setLoading(true);
         try {
