@@ -8,6 +8,7 @@ export const BreakingNewsContextProvider = ({ children }) => {
     const [ background, setBackground ] = useState(false);
     const [ form, setForm ] = useState("signin");
     const [ user, setUser ] = useState(null);
+    const [ warning, setWarning ] = useState("");
 
     const data = {
         background,
@@ -16,6 +17,8 @@ export const BreakingNewsContextProvider = ({ children }) => {
         setForm,
         user, 
         setUser,
+        warning, 
+        setWarning
     }
 
     useEffect(() => {

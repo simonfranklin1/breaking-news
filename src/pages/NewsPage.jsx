@@ -63,13 +63,7 @@ const NewsPage = () => {
     })
   }
 
-  const handleDelete = async() => {
-    const response = await deletePost(id, isLogged.token);
-
-    if(response) {
-      navigate("/")
-    }
-  }
+  
 
   const handleDeleteComment = async(idComment) => {
     const response = await deleteComment(id, isLogged.token, idComment).then(() => {

@@ -9,6 +9,7 @@ import Comment from "./Comment";
 import Loading from "./Loading";
 import PostForm from "./PostForm";
 import UserForm from "./UserForm";
+import Warning from "./Warning";
 
 export {
     Navbar,
@@ -21,5 +22,6 @@ export {
     Comment,
     Loading,
     PostForm,
-    UserForm
+    UserForm,
+    Warning
 }
