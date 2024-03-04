@@ -105,12 +105,15 @@ const NewsPage = () => {
           <PostContent post={post} comments={comments} likes={likes} />
           <div className="flex flex-col p-5 pt-0">
             <PostInteractions comment={comment} setComment={setComment} handleComment={handleComment} username={user.username} likes={likes} handleLike={handleLike} alreadyLiked={alreadyLiked} />
+            <div className="text-xl pb-5 text-center border-b-2">
+              Comentários
+            </div>
             <ul className="flex flex-col py-5 gap-5">
               {
                 comments.length > 0 && (
                   <PostComments comments={comments} user={isLogged} handleDeleteComment={handleDeleteComment} />
                 ) || (
-                  <div className="text-xl text-center">
+                  <div className="text-lg text-center">
                     Nenhum Comentário
                   </div>
                 )

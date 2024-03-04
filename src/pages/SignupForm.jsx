@@ -38,7 +38,7 @@ const SignupForm = () => {
     }
 
     return (
-        <form className='bg-white p-8 rounded-md sm:min-w-[400px] relative shadow-xl' onSubmit={handleSubmit(createAccount)}>
+        <form className='bg-white p-8 rounded-md sm:min-w-[400px] w-[390px] relative shadow-xl' onSubmit={handleSubmit(createAccount)}>
             <button type='button' className="text-xl font-bold absolute top-2 right-2">
                 <Link to={"/"}><i className="bi bi-x-lg"></i></Link>
             </button>
