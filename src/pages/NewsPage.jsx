@@ -103,7 +103,7 @@ const NewsPage = () => {
             </div>
           </button>
           <PostContent post={post} comments={comments} likes={likes} />
-          <div className="flex flex-col p-5">
+          <div className="flex flex-col p-5 pt-0">
             <PostInteractions comment={comment} setComment={setComment} handleComment={handleComment} username={user.username} likes={likes} handleLike={handleLike} alreadyLiked={alreadyLiked} />
             <ul className="flex flex-col py-5 gap-5">
               {

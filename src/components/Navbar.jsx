@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="flex w-full justify-between items-center p-4 fixed top-0 z-20 bg-white shadow-md">
-        <form className="relative w-[220px] flex items-center" onSubmit={handleSearch}>
+        <form className="relative w-[220px] md:flex items-center hidden" onSubmit={handleSearch}>
           <button type="submit" className="absolute top-[1] right-1 bg-[#f5f5f5] text-[#757575] rounded-[0.3rem] p-2 z-10">
             <i className="bi bi-search"></i>
           </button>
