@@ -24,6 +24,9 @@ const NewsPage = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   useEffect(() => {
+    window.scroll({
+      top: 0
+    })
     if (isLogged && isLogged.token) {
       getPostById(id, isLogged.token).then((response) => {
         setPost(response.news);

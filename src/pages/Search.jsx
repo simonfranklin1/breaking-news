@@ -8,6 +8,9 @@ const Search = () => {
     const [posts, setPosts] = useState(null);
 
     useEffect(() => {
+        window.scroll({
+            top: 0
+          })
         getPostsBySearch(query).then(response => setPosts(response));
     }, [query]);
 

@@ -17,7 +17,7 @@ const Card = ({ id, title, text, banner, likes, comments, creator, top = false }
 
   return (
     <div onClick={handlePost}>
-      <div className={`flex flex-col sm:shadow-md rounded-md bg-white overflow-hidden duration-300 sm:hover:shadow-xl sm:hover:scale-[1.02] cursor-pointer lg:w-full h-full ${ top ? "sm:h-[375px]" : "sm:h-[235px] h-[450px] max-h-[450px]"}`}>
+      <div className={`flex flex-col sm:shadow-md rounded-md bg-white overflow-hidden duration-300 sm:hover:shadow-xl sm:hover:scale-[1.02] cursor-pointer lg:w-full h-full ${ top ? "lg:h-[375px]" : "lg:h-[235px] h-[450px] max-h-[450px]"}`}>
         <div className="flex lg:flex-row flex-col-reverse justify-between w-full h-full">
           <article className="flex flex-col justify-between p-5 flex-1">
             <div className="flex flex-col w-full">

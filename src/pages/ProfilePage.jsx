@@ -15,6 +15,9 @@ const ProfilePage = () => {
     const loggedUser = isLogged ? isLogged.id : null;
 
     useEffect(() => {
+        window.scroll({
+            top: 0
+          })
         if (isLogged && isLogged.token) {
             getUser(id, isLogged.token).then(response => setUser(response));
 

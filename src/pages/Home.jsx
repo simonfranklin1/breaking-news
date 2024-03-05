@@ -10,6 +10,9 @@ const Home = () => {
   const [topNews, setTopNews] = useState(null);
 
   useEffect(() => {
+    window.scroll({
+      top: 0
+    })
     getAllPosts().then(response => setPosts(response));
     getTopNews().then(response => setTopNews(response.news));
   }, [])

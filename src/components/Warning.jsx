@@ -23,11 +23,11 @@ const Warning = () => {
     return (
         <>
             <div className={`bg-black fixed top-0 left-0 w-full h-full z-50 opacity-30 ${warning === "" ? "hidden" : ""}`} onClick={() => setWarning("")}></div>
-            <div className={`bg-white flex flex-col gap-8 p-8 rounded-md sm:w-[400px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] shadow-xl z-50 ${warning === "" ? "hidden" : ""}`}>
+            <div className={`bg-white flex flex-col gap-8 p-8 rounded-md sm:w-[400px] w-[390px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] shadow-xl z-50 ${warning === "" ? "hidden" : ""}`}>
                 {
                     warning === "Login" && (
                         <>
-                            <div className="text-3xl font-bold">
+                            <div className="sm:text-3xl text-2xl font-bold">
                                 Faça Login para ver os detalhes da notícia
                             </div>
                             <CustomButton text={"LOGIN"} type={"button"} handleClick={() => { navigate("/signin"), setWarning("") }} />
@@ -37,7 +37,7 @@ const Warning = () => {
                             <div className="text-5xl text-center text-red-500 font-semibold">
                                 <i className="bi bi-x-circle"></i>
                             </div>
-                            <div className="text-3xl font-bold">
+                            <div className="sm:text-3xl text-2xl font-bold">
                                 Tem certeza que quer deletar a notícia?
                             </div>
                             <div className="flex justify-end gap-4">
