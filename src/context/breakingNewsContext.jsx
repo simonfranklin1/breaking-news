@@ -25,10 +25,12 @@ export const BreakingNewsContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        const token = getLocalStorage("access_token");
+        const isLogged = getLocalStorage("access_token");
 
-        if(token) {
-            getUser(token.id, token.token).then(response => setUser(response));
+        if(isLogged) {
+            getUser(isLogged.id, isLogged.token).then(response => setUser(response));
+        } else {
+            setUser(null);
         }
         
     }, [])
