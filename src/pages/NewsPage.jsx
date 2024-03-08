@@ -89,7 +89,7 @@ const NewsPage = () => {
   return (
     <>
       {post && (
-        <div className="w-full flex flex-col bg-white rounded-lg overflow-hidden relative group">
+        <div className="w-full flex flex-col bg-white rounded-lg overflow-hidden relative group font-news">
           <button className={`absolute top-1 right-1 bg-[#2C8AB4] flex items-center justify-center w-[2.5rem] h-[2.5rem] rounded-full text-white text-xl group-hover:opacity-100 opacity-0 duration-200 ${isLogged.id === post.creator.id ? "block" : "hidden"}`} onClick={() => setOpenMenu(prev => !prev)}>
             <div className="relative">
               <i className="bi bi-three-dots-vertical"></i>
