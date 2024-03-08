@@ -1,10 +1,12 @@
-import React from 'react'
+import { Link } from "react-router-dom"
 
 const CommentContainer = ({ comment, user, handleDeleteComment }) => {
     return (
         <div className="flex items-start gap-4 max-w-[95%]">
-            <img src={comment.avatar} alt={comment.username} className='w-12 h-12 rounded-full object-cover' />
-            <div className='flex flex-col  bg-slate-200 rounded-lg px-5 py-2 gap-4 relative'>
+            <Link to={"/profile/" + comment.userId}>
+                <img src={comment.avatar} alt={comment.username} className="w-12 h-12 rounded-full object-cover" />
+            </Link>
+            <div className="flex flex-col  bg-slate-200 rounded-lg px-5 py-2 gap-4 relative">
                 <div className="text-lg font-bold">
                     {comment.username}
                 </div>

@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css"
 function App() {
 
   return (
-    <div className="font-news">
+    <div>
       <ToastContainer
         position="bottom-right"
         autoClose={5000}

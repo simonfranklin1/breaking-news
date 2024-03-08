@@ -34,7 +34,7 @@ const ProfilePage = () => {
                     <div className="absolute bg-white w-[172px] h-[172px] rounded-full overflow-hidden border-[5px] border-white z-10">
                         <img src={user ? user.avatar : ProfileImage} alt="profile" className='object-cover w-full h-full' />
                     </div>
-                    <button className={`w-[40px] h-[40px] rounded-full bg-white text-[#2C8AB4] text-xl self-end ${id === loggedUser ? "flex" : "hidden"} justify-center items-center hover:scale-105 duration-300 cursor-pointer`} onClick={() => navigate("/editUser/" + isLogged.id)}>
+                    <button className={`w-[40px] h-[40px] rounded-full bg-white text-[#2C8AB4] text-xl self-end ${id === loggedUser ? "flex justify-center items-center" : "hidden"} hover:scale-105 duration-300`} onClick={() => navigate("/editUser/" + isLogged.id)}>
                         <i className="bi bi-pencil-square"></i>
                     </button>
                 </div>
@@ -47,7 +47,7 @@ const ProfilePage = () => {
                             @{user ? user.username : "...carregando"}
                         </div>
                     </div>
-                    <button className={`h-[30.48px] w-[30.48px] bg-[#2C8AB4] text-white text-xl self-end flex justify-center items-center rounded-full ${id === loggedUser ? "flex" : "hidden"} justify-center items-center hover:scale-105 duration-300 cursor-pointer`} onClick={() => navigate("/createPost")}>
+                    <button className={`h-[30.48px] w-[30.48px] bg-[#2C8AB4] text-white text-xl self-end rounded-full ${id === loggedUser ? "flex justify-center items-center" : "hidden"} hover:scale-105 duration-300`} onClick={() => navigate("/createPost")}>
                         <i className="bi bi-plus-lg"></i>
                     </button>
                 </div>

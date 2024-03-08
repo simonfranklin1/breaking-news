@@ -14,12 +14,12 @@ const PostInteractions = ({ handleComment, username, comment, setComment, handle
                         alreadyLiked && (
                             <>
                                 <i className="bi bi-hand-thumbs-up-fill"></i>
-                                <span>Gostei</span>
+                                <span>Curtir</span>
                             </>
                         ) || (
                             <>
                                 <i className="bi bi-hand-thumbs-up"></i>
-                                <span>Gostei</span>
+                                <span>Curtir</span>
                             </>
                         )
                     }
