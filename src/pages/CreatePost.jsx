@@ -15,7 +15,7 @@ const CreatePost = () => {
   }, []);
 
   const handleCreate = (values) => {
-    createPost(isLogged.token, values)
+    createPost(values)
       .then((response) => {
         toast.success(response.message);
         navigate("/");

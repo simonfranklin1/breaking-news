@@ -18,6 +18,7 @@ const SigninForm = () => {
         const { email, password } = values;
 
         setLoading(true);
+        
         try {
             const data = await login(email, password);
 

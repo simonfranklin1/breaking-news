@@ -28,7 +28,7 @@ const NewsPage = () => {
       top: 0
     })
     if (isLogged && isLogged.token) {
-      getPostById(id, isLogged.token).then((response) => {
+      getPostById(id).then((response) => {
         setPost(response.news);
         setComments(response.news.comments);
         setLikes(response.news.likes);
@@ -49,7 +49,7 @@ const NewsPage = () => {
     e.preventDefault();
 
     if (comment.length) {
-      commentPost(post.id, isLogged.token, comment)
+      commentPost(post.id, comment)
         .then((response) => {
           setComments(response.news.comments);
           toast.success(response.message);
@@ -59,7 +59,7 @@ const NewsPage = () => {
   }
 
   const handleLike = () => {
-    likePost(post.id, isLogged.token).then(response => {
+    likePost(post.id).then(response => {
       if (response.message === "Liked post successfully.") {
         setLikes([...likes, { userId: user.id, createdAt: new Date() }]);
         setAlreadyLiked(true);

@@ -19,7 +19,7 @@ const EditPost = () => {
     }, [id])
 
     const handleEdit = (values) => {
-        updatePost(id, isLogged.token, values).then((response) => {
+        updatePost(id, values).then((response) => {
             toast.success(response.message)
             navigate("/news/" + id)
         });

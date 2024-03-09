@@ -20,7 +20,7 @@ const EditUser = () => {
   }, [id])
 
   const handleEdit = (values) => {
-    editUser(id, isLogged.token, values).then((response) => {
+    editUser(id, values).then((response) => {
       toast.success(response.message);
       navigate("/profile/" + id);
     })

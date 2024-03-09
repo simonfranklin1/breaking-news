@@ -19,9 +19,9 @@ const ProfilePage = () => {
             top: 0
           })
         if (isLogged && isLogged.token) {
-            getUser(id, isLogged.token).then(response => setUser(response));
+            getUser(id).then(response => setUser(response));
 
-            getUserPosts(id, isLogged.token).then(response => setPosts(response));
+            getUserPosts(id).then(response => setPosts(response));
         } else {
             navigate("/");
         }

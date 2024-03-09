@@ -38,12 +38,12 @@ export const getPostsBySearch = async (search) => {
     return data
 }
 
-export const getUserPosts = async(id, token) => {
+export const getUserPosts = async(id) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/user/" + id, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         }
     });
 
@@ -52,12 +52,12 @@ export const getUserPosts = async(id, token) => {
     return data;
 }
 
-export const getPostById = async(id, token) => {
+export const getPostById = async(id) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/find/" + id, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         }
     });
 
@@ -66,12 +66,12 @@ export const getPostById = async(id, token) => {
     return data;    
 }
 
-export const createPost = async(token, post) => {
+export const createPost = async(post) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/create", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         },
         body: JSON.stringify({
             title: post.title,
@@ -85,12 +85,12 @@ export const createPost = async(token, post) => {
     return data;   
 }
 
-export const commentPost = async(id, token, comment) => {
+export const commentPost = async(id, comment) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/comment/" + id, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         },
         body: JSON.stringify({
             comment
@@ -102,12 +102,12 @@ export const commentPost = async(id, token, comment) => {
     return data;
 }
 
-export const deleteComment = async(id, token, idComment) => {
+export const deleteComment = async(id, idComment) => {
     const response = await fetch(`https://api-breakingnews-08eu.onrender.com/news/comment/delete/${id}/${idComment}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         }
     });
     
@@ -116,12 +116,12 @@ export const deleteComment = async(id, token, idComment) => {
     return data;
 }
 
-export const likePost = async(id, token) => {
+export const likePost = async(id) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/like/" + id, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         }
     });
     
@@ -130,12 +130,12 @@ export const likePost = async(id, token) => {
     return data;
 }
 
-export const updatePost = async(id, token, post) => {
+export const updatePost = async(id, post) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/update/" + id, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         },
         body: JSON.stringify({
             title: post.title,
@@ -149,12 +149,12 @@ export const updatePost = async(id, token, post) => {
     return data;
 }
 
-export const deletePost = async(id, token) => {
+export const deletePost = async(id) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/news/delete/" + id, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         }
     });
 
@@ -202,12 +202,12 @@ export const signup = async({ name, email, password, avatar, background }) => {
     return data;
 }
 
-export const getUser = async (id, token) => {
+export const getUser = async (id) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/user/findById/" + id, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         }
     });
 
@@ -216,12 +216,12 @@ export const getUser = async (id, token) => {
     return data;
 }
 
-export const editUser = async(id, token, user) => {
+export const editUser = async(id, user) => {
     const response = await fetch("https://api-breakingnews-08eu.onrender.com/user/update/" + id, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + getLocalStorage("access_token").token
         },
         body: JSON.stringify({
             name: user.name,
